@@ -1,31 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Weapon.hpp                                         :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dcologgi <dcologgi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/09 16:29:38 by dcologgi          #+#    #+#             */
-/*   Updated: 2023/11/16 11:53:43 by dcologgi         ###   ########.fr       */
+/*   Created: 2023/11/20 11:05:27 by dcologgi          #+#    #+#             */
+/*   Updated: 2023/11/20 11:09:59 by dcologgi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef WEAPON_H
-# define WEAPON_H
+#include "Harl.hpp"
 
-#include <iostream>
+int main() {
+	Harl	harl;
+	
+	harl.complain("DEBUG");
+	harl.complain("INFO");
+	harl.complain("WARNING");
+	harl.complain("ERROR");
+	
+	harl.complain("INVALID");
 
-class Weapon
-{
-    private:
-        std::string type;
-
-    public:
-        Weapon(std::string startType);
-        ~Weapon();
-
-        const std::string& getType();
-        void setType(std::string newType);
-};
-
-#endif
+	return (0);
+}

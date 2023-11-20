@@ -1,31 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Weapon.hpp                                         :+:      :+:    :+:   */
+/*   sed.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dcologgi <dcologgi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/09 16:29:38 by dcologgi          #+#    #+#             */
-/*   Updated: 2023/11/16 11:53:43 by dcologgi         ###   ########.fr       */
+/*   Created: 2023/11/16 14:44:19 by dcologgi          #+#    #+#             */
+/*   Updated: 2023/11/16 15:35:33 by dcologgi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef WEAPON_H
-# define WEAPON_H
+#ifndef SED_HPP
+# define SED_HPP
 
-#include <iostream>
+# include <iostream>
+# include <fstream>
+# include <string>
 
-class Weapon
-{
-    private:
-        std::string type;
+class FileReplace {
+	private:
+		std::string p_fileName;
+		std::string p_s1;
+		std::string p_s2;
+	
+	public:
+		FileReplace(std::string fileName, std::string s1, std::string s2);
+		~FileReplace();
 
-    public:
-        Weapon(std::string startType);
-        ~Weapon();
-
-        const std::string& getType();
-        void setType(std::string newType);
+		void	replaceAndWriteToFile();
 };
 
 #endif
