@@ -6,7 +6,7 @@
 /*   By: dcologgi <dcologgi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 15:10:03 by dcologgi          #+#    #+#             */
-/*   Updated: 2023/11/23 09:21:08 by dcologgi         ###   ########.fr       */
+/*   Updated: 2023/11/23 11:06:11 by dcologgi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ class   ClapTrap {
 
 	public:
 		ClapTrap(std::string clap_name);
-		~ClapTrap();
+		virtual ~ClapTrap();
 
 		void	attack(const std::string& target);
 		void	takeDamage(unsigned int amount);

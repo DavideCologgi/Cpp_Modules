@@ -1,35 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ClapTrap.hpp                                       :+:      :+:    :+:   */
+/*   DiamondTrap.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dcologgi <dcologgi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/22 15:10:03 by dcologgi          #+#    #+#             */
-/*   Updated: 2023/11/23 09:21:08 by dcologgi         ###   ########.fr       */
+/*   Created: 2023/11/23 10:37:50 by dcologgi          #+#    #+#             */
+/*   Updated: 2023/11/23 11:15:29 by dcologgi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CLAPTRAP_H
-# define CLAPTRAP_H
+#ifndef DIAMONDTRAP_H
+# define DIAMONDTRAP_H
 
-#include <string>
-#include <iostream>
+#include "ScavTrap.hpp"
+#include "FragTrap.hpp"
 
-class   ClapTrap {
-	protected:
-		std::string		name;
-		unsigned int	hitPoints;
-		unsigned int	energyPoints;
-		unsigned int	attackDamage;
-
+class   DiamondTrap : public ScavTrap, public FragTrap {
+	private:
+		std::string	name;
+	
 	public:
-		ClapTrap(std::string clap_name);
-		~ClapTrap();
+		DiamondTrap(const std::string& newName);
+		~DiamondTrap();
 
-		void	attack(const std::string& target);
-		void	takeDamage(unsigned int amount);
-		void	beRepaired(unsigned int amount);
+		void	whoAmI();
 };
 
 #endif
