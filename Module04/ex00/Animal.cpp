@@ -1,27 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ScavTrap.hpp                                       :+:      :+:    :+:   */
+/*   Animal.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dcologgi <dcologgi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/23 09:13:25 by dcologgi          #+#    #+#             */
-/*   Updated: 2023/11/27 14:23:38 by dcologgi         ###   ########.fr       */
+/*   Created: 2023/11/27 09:38:21 by dcologgi          #+#    #+#             */
+/*   Updated: 2023/11/27 10:49:34 by dcologgi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SCAVTRAP_HPP
-# define SCAVTRAP_HPP
+#include "Animal.hpp"
 
-#include "ClapTrap.hpp"
+Animal::Animal() {
+	type = "Generic animal";
+	std::cout << "A new animal joins the farm!" << std::endl;
+}
 
-class ScavTrap : public ClapTrap {
-    public:
-        ScavTrap(const std::string& name);
-        ~ScavTrap();
+Animal::~Animal() {
+	std::cout << "An animal of the farm dies 🪦" << std::endl;
+}
 
-        void    guardGate();
-        void    attack(const std::string& target);
-};
+void	Animal::makeSound() {
+	std::cout << "You hear an animal sound from afar but you can't recognize it. 🔊"
+		<< std::endl;
+}
 
-#endif
+std::string	Animal::getType() const {
+	return (type);
+}

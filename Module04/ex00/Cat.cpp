@@ -1,27 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ScavTrap.hpp                                       :+:      :+:    :+:   */
+/*   Cat.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dcologgi <dcologgi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/23 09:13:25 by dcologgi          #+#    #+#             */
-/*   Updated: 2023/11/27 14:23:38 by dcologgi         ###   ########.fr       */
+/*   Created: 2023/11/27 10:43:00 by dcologgi          #+#    #+#             */
+/*   Updated: 2023/11/27 10:45:38 by dcologgi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SCAVTRAP_HPP
-# define SCAVTRAP_HPP
+#include "Animal.hpp"
 
-#include "ClapTrap.hpp"
+Cat::Cat() {
+	type = "Cat";
+	std::cout << "A new kitty enters home! 🐈" << std::endl;
+}
 
-class ScavTrap : public ClapTrap {
-    public:
-        ScavTrap(const std::string& name);
-        ~ScavTrap();
+Cat::~Cat() {
+	std::cout << "A cat leaves the house. 🐈" << std::endl;
+}
 
-        void    guardGate();
-        void    attack(const std::string& target);
-};
-
-#endif
+void    makeSound() {
+	std::cout << "Meow! Meow! 🔊" << std::endl;
+}

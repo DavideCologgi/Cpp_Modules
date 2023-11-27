@@ -1,27 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ScavTrap.hpp                                       :+:      :+:    :+:   */
+/*   Dog.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dcologgi <dcologgi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/23 09:13:25 by dcologgi          #+#    #+#             */
-/*   Updated: 2023/11/27 14:23:38 by dcologgi         ###   ########.fr       */
+/*   Created: 2023/11/27 10:27:08 by dcologgi          #+#    #+#             */
+/*   Updated: 2023/11/27 10:45:34 by dcologgi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SCAVTRAP_HPP
-# define SCAVTRAP_HPP
+#include "Animal.hpp"
 
-#include "ClapTrap.hpp"
+Dog::Dog() {
+	type = "Dog";
+	std::cout << "A new doggo says hi! 🐕" << std::endl;
+}
 
-class ScavTrap : public ClapTrap {
-    public:
-        ScavTrap(const std::string& name);
-        ~ScavTrap();
+Dog::~Dog() {
+	std::cout << "A doggo says goodbye. 🐕" << std::endl;
+}
 
-        void    guardGate();
-        void    attack(const std::string& target);
-};
-
-#endif
+void    makeSound() {
+	std::cout << "Woof! Woooof! 🔊" << std::endl;
+}

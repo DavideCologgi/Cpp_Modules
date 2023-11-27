@@ -1,27 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ScavTrap.hpp                                       :+:      :+:    :+:   */
+/*   WrongCat.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dcologgi <dcologgi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/23 09:13:25 by dcologgi          #+#    #+#             */
-/*   Updated: 2023/11/27 14:23:38 by dcologgi         ###   ########.fr       */
+/*   Created: 2023/11/27 11:26:07 by dcologgi          #+#    #+#             */
+/*   Updated: 2023/11/27 13:51:10 by dcologgi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SCAVTRAP_HPP
-# define SCAVTRAP_HPP
+#include "WrongCat.hpp"
 
-#include "ClapTrap.hpp"
+WrongCat::WrongCat() {
+    type = "WrongCat";
+    std::cout << "Wrong cat constructor" << std::endl;
+}
 
-class ScavTrap : public ClapTrap {
-    public:
-        ScavTrap(const std::string& name);
-        ~ScavTrap();
+WrongCat::~WrongCat() {
+    std::cout << "Wrong cat destructor" << std::endl;
+}
 
-        void    guardGate();
-        void    attack(const std::string& target);
-};
-
-#endif
+void    WrongCat::makeSound() {
+    std::cout << "Wrong cat makes a SQUIT! sound." << std::endl;
+}
