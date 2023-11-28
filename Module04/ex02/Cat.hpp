@@ -1,26 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.cpp                                            :+:      :+:    :+:   */
+/*   Cat.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dcologgi <dcologgi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/27 10:43:00 by dcologgi          #+#    #+#             */
-/*   Updated: 2023/11/28 10:05:03 by dcologgi         ###   ########.fr       */
+/*   Created: 2023/11/27 10:28:58 by dcologgi          #+#    #+#             */
+/*   Updated: 2023/11/28 14:09:17 by dcologgi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Cat.hpp"
+#ifndef CAT_HPP
+# define CAT_HPP
 
-Cat::Cat() {
-	type = "Cat";
-	std::cout << "A new kitty enters home! 🐈" << std::endl;
-}
+# include "AAnimal.hpp"
+# include "Brain.hpp"
 
-Cat::~Cat() {
-	std::cout << "A cat leaves the house. 🐈" << std::endl;
-}
+class Cat : public AAnimal {
+    private:
+        Brain*  brain;
+        
+    public:
+        Cat();
+        Cat(const Cat& other);
+        ~Cat();
 
-void    Cat::makeSound() const {
-	std::cout << "Meow! Meow! 🔊" << std::endl;
-}
+        void        makeSound() const;
+        static Cat* createCat();
+        Cat*        clone() const;
+};
+
+#endif

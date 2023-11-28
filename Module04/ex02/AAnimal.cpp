@@ -1,26 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.cpp                                            :+:      :+:    :+:   */
+/*   AAnimal.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dcologgi <dcologgi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/27 10:43:00 by dcologgi          #+#    #+#             */
-/*   Updated: 2023/11/28 10:05:03 by dcologgi         ###   ########.fr       */
+/*   Created: 2023/11/27 09:38:21 by dcologgi          #+#    #+#             */
+/*   Updated: 2023/11/28 14:14:06 by dcologgi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Cat.hpp"
+#include "AAnimal.hpp"
 
-Cat::Cat() {
-	type = "Cat";
-	std::cout << "A new kitty enters home! 🐈" << std::endl;
+AAnimal::~AAnimal() {
+	std::cout << "An animal of the farm dies 🪦" << std::endl;
 }
 
-Cat::~Cat() {
-	std::cout << "A cat leaves the house. 🐈" << std::endl;
+void	AAnimal::makeSound() const {
+	std::cout << "You hear an animal sound from afar but you can't recognize it. 🔊"
+		<< std::endl;
 }
 
-void    Cat::makeSound() const {
-	std::cout << "Meow! Meow! 🔊" << std::endl;
+const std::string&	AAnimal::getType() const {
+	return (type);
+}
+
+AAnimal*	AAnimal::createAnimal() {
+	return (NULL);
 }

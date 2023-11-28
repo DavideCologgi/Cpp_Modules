@@ -6,7 +6,7 @@
 /*   By: dcologgi <dcologgi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 10:52:00 by dcologgi          #+#    #+#             */
-/*   Updated: 2023/11/27 10:54:27 by dcologgi         ###   ########.fr       */
+/*   Updated: 2023/11/28 14:19:02 by dcologgi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,13 @@
 # define WRONGANIMAL_HPP
 
 # include <iostream>
-# include <string>
 
 class WrongAnimal {
-	protected:
-		std::string type;
-
 	public:
 		WrongAnimal();
-		~WrongAnimal();
+		virtual ~WrongAnimal();
 
-		void		makeSound();
-		std::string	getType() const;
+		void	makeSound() const;
 };
 
 #endif

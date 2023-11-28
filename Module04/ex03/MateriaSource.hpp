@@ -1,26 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.cpp                                            :+:      :+:    :+:   */
+/*   MateriaSource.hpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dcologgi <dcologgi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/27 10:43:00 by dcologgi          #+#    #+#             */
-/*   Updated: 2023/11/28 10:05:03 by dcologgi         ###   ########.fr       */
+/*   Created: 2023/11/28 16:23:52 by dcologgi          #+#    #+#             */
+/*   Updated: 2023/11/28 16:38:23 by dcologgi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Cat.hpp"
+#ifndef MATERIASOURCE_HPP
+# define MATERIASOURCE_HPP
 
-Cat::Cat() {
-	type = "Cat";
-	std::cout << "A new kitty enters home! 🐈" << std::endl;
-}
+# include "IMateriaSource.hpp"
+# include "AMateria.hpp"
 
-Cat::~Cat() {
-	std::cout << "A cat leaves the house. 🐈" << std::endl;
-}
+class   MateriaSource : public IMateriaSource {
+    private:
+        AMateria* learnedMat[4];
 
-void    Cat::makeSound() const {
-	std::cout << "Meow! Meow! 🔊" << std::endl;
-}
+    public:
+        MateriaSource();
+        ~MateriaSource();
+
+        void        learnMateria(AMateria* materia);
+        AMateria*   createMateria(std::string const &type);
+};
+
+#endif

@@ -1,26 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.cpp                                            :+:      :+:    :+:   */
+/*   AMateria.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dcologgi <dcologgi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/27 10:43:00 by dcologgi          #+#    #+#             */
-/*   Updated: 2023/11/28 10:05:03 by dcologgi         ###   ########.fr       */
+/*   Created: 2023/11/28 15:24:54 by dcologgi          #+#    #+#             */
+/*   Updated: 2023/11/28 16:41:30 by dcologgi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Cat.hpp"
+#include "AMateria.hpp"
+#include "ICharacter.hpp"
 
-Cat::Cat() {
-	type = "Cat";
-	std::cout << "A new kitty enters home! 🐈" << std::endl;
+AMateria::AMateria(std::string const & type) : p_type(type) {}
+
+AMateria::~AMateria() {}
+
+std::string const   &AMateria::getType() const
+{
+    return (p_type);
 }
 
-Cat::~Cat() {
-	std::cout << "A cat leaves the house. 🐈" << std::endl;
-}
-
-void    Cat::makeSound() const {
-	std::cout << "Meow! Meow! 🔊" << std::endl;
+void                AMateria::use(ICharacter &target)
+{
+    std::cout << "* uses " << getType() << " on " << target.getName()
+        << " *" << std::endl;
 }

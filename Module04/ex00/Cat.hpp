@@ -6,7 +6,7 @@
 /*   By: dcologgi <dcologgi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 10:28:58 by dcologgi          #+#    #+#             */
-/*   Updated: 2023/11/27 11:27:40 by dcologgi         ###   ########.fr       */
+/*   Updated: 2023/11/28 14:19:17 by dcologgi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ class Cat : public Animal {
         Cat();
         ~Cat();
 
-        void    makeSound();
+        virtual void    makeSound() const;
 };
 
 #endif

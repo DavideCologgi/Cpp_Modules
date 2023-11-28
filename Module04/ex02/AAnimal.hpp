@@ -1,26 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.cpp                                            :+:      :+:    :+:   */
+/*   AAnimal.hpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dcologgi <dcologgi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/27 10:43:00 by dcologgi          #+#    #+#             */
-/*   Updated: 2023/11/28 10:05:03 by dcologgi         ###   ########.fr       */
+/*   Created: 2023/11/27 09:32:28 by dcologgi          #+#    #+#             */
+/*   Updated: 2023/11/28 14:50:40 by dcologgi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Cat.hpp"
+#ifndef AANIMAL_HPP
+# define AANIMAL_HPP
 
-Cat::Cat() {
-	type = "Cat";
-	std::cout << "A new kitty enters home! 🐈" << std::endl;
-}
+# include <iostream>
+# include <string>
 
-Cat::~Cat() {
-	std::cout << "A cat leaves the house. 🐈" << std::endl;
-}
+class AAnimal {
+	protected:
+		std::string	type;
+		
+	public:
+		virtual ~AAnimal();
+	
+		virtual void		makeSound() const = 0;
+		const std::string&	getType() const;
+		virtual	AAnimal*	clone() const = 0;
+		static AAnimal*		createAnimal();
+};
 
-void    Cat::makeSound() const {
-	std::cout << "Meow! Meow! 🔊" << std::endl;
-}
+#endif

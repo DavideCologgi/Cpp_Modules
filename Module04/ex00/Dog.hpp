@@ -6,7 +6,7 @@
 /*   By: dcologgi <dcologgi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 10:23:25 by dcologgi          #+#    #+#             */
-/*   Updated: 2023/11/27 13:55:51 by dcologgi         ###   ########.fr       */
+/*   Updated: 2023/11/28 14:19:24 by dcologgi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,12 @@
 
 # include "Animal.hpp"
 
-class Dog: public Animal {
+class Dog : public Animal {
     public:
         Dog();
         ~Dog();
 
-        void    makeSound();
+        virtual void    makeSound() const;
 };
 
 #endif

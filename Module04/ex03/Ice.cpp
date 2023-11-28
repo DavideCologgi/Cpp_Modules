@@ -1,26 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.cpp                                            :+:      :+:    :+:   */
+/*   Ice.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dcologgi <dcologgi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/27 10:43:00 by dcologgi          #+#    #+#             */
-/*   Updated: 2023/11/28 10:05:03 by dcologgi         ###   ########.fr       */
+/*   Created: 2023/11/28 15:29:42 by dcologgi          #+#    #+#             */
+/*   Updated: 2023/11/28 16:40:52 by dcologgi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Cat.hpp"
+#include "Ice.hpp"
+#include "ICharacter.hpp"
 
-Cat::Cat() {
-	type = "Cat";
-	std::cout << "A new kitty enters home! 🐈" << std::endl;
+Ice::Ice() : AMateria("ice") {}
+
+Ice::~Ice() {}
+
+AMateria    *Ice::clone() const {
+    return (new Ice(*this));
 }
 
-Cat::~Cat() {
-	std::cout << "A cat leaves the house. 🐈" << std::endl;
-}
-
-void    Cat::makeSound() const {
-	std::cout << "Meow! Meow! 🔊" << std::endl;
+void        Ice::use(ICharacter &target) {
+    std::cout << "* shoots an ice bolt at " << target.getName()
+        << " *" << std::endl;
 }
