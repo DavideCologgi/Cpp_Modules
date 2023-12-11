@@ -6,7 +6,7 @@
 /*   By: dcologgi <dcologgi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 13:57:20 by dcologgi          #+#    #+#             */
-/*   Updated: 2023/11/30 14:44:49 by dcologgi         ###   ########.fr       */
+/*   Updated: 2023/12/11 12:34:22 by dcologgi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,16 @@ void        Bureaucrat::gradeDown() {
 		grade++;
 	} else {
 		throw GradeTooLowException();
+	}
+}
+
+void		Bureaucrat::signForm(Form& form) {
+	form.beSigned(*this);
+	if (form.getSign()) {
+		std::cout << getName() << " signed " << form.getName() << std::endl;
+	} else {
+		std::cout << getName() << " couldn't sign " << form.getName()
+			<< " because his grade is not high enough." << std::endl;
 	}
 }
 

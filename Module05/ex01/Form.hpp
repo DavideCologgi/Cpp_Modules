@@ -6,7 +6,7 @@
 /*   By: dcologgi <dcologgi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 14:56:34 by dcologgi          #+#    #+#             */
-/*   Updated: 2023/11/30 15:05:16 by dcologgi         ###   ########.fr       */
+/*   Updated: 2023/12/11 12:33:30 by dcologgi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 # define FORM_HPP
 
 # include "Bureaucrat.hpp"
+
+class	Bureaucrat;
 
 class   Form {
 	private:
@@ -23,17 +25,31 @@ class   Form {
 		const int           exe_grade;
 	
 	public:
-		class	GradeTooHighException() {};
-		class	GradeTooLowException() {};
+		class GradeTooHighException : public std::exception {
+			public:
+				const char *what() const throw() {
+					return ("SignGrade is too high");
+				}
+		};
+		class GradeTooLowException : public std::exception {
+			public:
+				const char *what() const throw() {
+					return ("SignGrade is too low");
+				}
+		};
 
-		const std::string	getName();
-		bool				getSign();
-		const int			getSignGrade();
-		const int			getExeGrade();
+		Form(const std::string& form, int grade, int exe);
+		~Form();
 		
-		void				beSigned(Bureaucrat& bureaucrat);
+		std::string	getName() const;
+		bool		getSign() const;
+		int			getSignGrade() const;
+		int			getExeGrade() const;
+		void		setSign(bool firmed);
+		
+		void		beSigned(Bureaucrat& bureaucrat);
 };
 
-std::ostream& operator<<(std::ostream& os, const Bureaucrat& bureaucrat, const Form& form);
+std::ostream& operator<<(std::ostream& os, const Form& form);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: dcologgi <dcologgi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 13:57:17 by dcologgi          #+#    #+#             */
-/*   Updated: 2023/11/30 15:05:33 by dcologgi         ###   ########.fr       */
+/*   Updated: 2023/12/11 12:32:52 by dcologgi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,10 @@
 # define BUREAUCRAT_HPP
 
 # include <iostream>
+
+# include "Form.hpp"
+
+class	Form;
 
 class   Bureaucrat {
 	private:
@@ -42,7 +46,7 @@ class   Bureaucrat {
 		int				getGrade() const;
 		void			gradeUp();
 		void			gradeDown();
-		void			signForm();
+		void			signForm(Form& form);
 };
 
 std::ostream& operator<<(std::ostream& os, const Bureaucrat& bureaucrat);
