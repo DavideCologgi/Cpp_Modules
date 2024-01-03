@@ -1,16 +1,6 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   AForm.cpp                                           :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: dcologgi <dcologgi@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/30 15:14:11 by dcologgi          #+#    #+#             */
-/*   Updated: 2023/12/11 12:55:28 by dcologgi         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "AForm.hpp"
+
+AForm::AForm() : sign(false), sign_grade(0), exe_grade(0) {}
 
 AForm::AForm(const std::string& form, const int grade, const int exe)
 	: name(form), sign(false), sign_grade(grade), exe_grade(exe) {
