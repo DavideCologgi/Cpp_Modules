@@ -6,7 +6,7 @@
 /*   By: dcologgi <dcologgi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 13:57:17 by dcologgi          #+#    #+#             */
-/*   Updated: 2023/12/11 12:32:52 by dcologgi         ###   ########.fr       */
+/*   Updated: 2024/01/04 11:37:53 by dcologgi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,14 +28,14 @@ class   Bureaucrat {
 		class GradeTooHighException : public std::exception {
 			public:
 				const char *what() const throw() {
-					return ("Grade is too high");
+					return ("grade is too high.");
 				}
 		};
 		
 		class GradeTooLowException : public std::exception {
 			public:
 				const char *what() const throw() {
-					return ("Grade is too low");
+					return ("grade is too low.");
 				}
 		};
 		

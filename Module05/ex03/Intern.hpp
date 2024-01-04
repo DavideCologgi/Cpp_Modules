@@ -1,29 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Intern.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dcologgi <dcologgi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/30 13:57:14 by dcologgi          #+#    #+#             */
-/*   Updated: 2023/12/20 14:56:56 by dcologgi         ###   ########.fr       */
+/*   Created: 2024/01/04 12:19:59 by dcologgi          #+#    #+#             */
+/*   Updated: 2024/01/04 12:25:53 by dcologgi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Bureaucrat.hpp"
-#include "ShrubberyCreationForm.hpp"
+#ifndef INTERN_HPP
+# define INTERN_HPP
 
-int main() {
-	try {
-		Bureaucrat	b1("Salvini", 100);
-		Bureaucrat	b2("Mattarella", 1);
+# include "AForm.hpp"
+# include "Bureaucrat.hpp"
 
-		ShrubberyCreationForm	shrub("home");
-		
-		b1.signForm(shrub);
-		
-	} catch (const std::exception& e) {
-		std::cerr << "Exception: " << e.what() << std::endl;
-	}
-	return (0);
-}
+class Intern {
+    public:
+        Intern();
+        ~Intern();
+
+        AForm*  makeForm(std::string form_name, std::string targ);
+};
+
+#endif

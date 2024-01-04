@@ -1,13 +1,25 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ShrubberyCreationForm.cpp                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dcologgi <dcologgi@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/01/04 11:42:05 by dcologgi          #+#    #+#             */
+/*   Updated: 2024/01/04 11:42:07 by dcologgi         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ShrubberyCreationForm.hpp"
 
 ShrubberyCreationForm::ShrubberyCreationForm(std::string targ)
-    : AForm("ShrubberyCreationForm", 145, 137) {
+    : AForm(targ, 145, 137) {
         this->target = targ;
 }
 
 ShrubberyCreationForm::~ShrubberyCreationForm() {}
 
-void    ShrubberyCreationForm::execute(const Bureaucrat& executor) {
+void    ShrubberyCreationForm::execute(const Bureaucrat& executor) const {
     if (this->getSign() == false) {
         throw FormNotSignedException();
     }
@@ -15,7 +27,7 @@ void    ShrubberyCreationForm::execute(const Bureaucrat& executor) {
         throw GradeTooLowException();
     }
 
-    std::ofstream file(this->getName() + "_shrubbery");
+    std::ofstream file((this->getName() + "_shrubbery").c_str());
     file << "                      ___"                     << std::endl;
     file << "                _,-'\"\"   \"\"\"\"`--."       << std::endl;
     file << "             ,-'          __,,-- \\"           << std::endl;
@@ -41,4 +53,6 @@ void    ShrubberyCreationForm::execute(const Bureaucrat& executor) {
     file << "           .dHFdHHFdHH|HHhoHHb."               << std::endl;
     file << "##########################################"    << std::endl;
     file.close();
+
+    std::cout << "Some shrubbery created!" << std::endl;
 }
