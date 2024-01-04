@@ -6,7 +6,7 @@
 /*   By: dcologgi <dcologgi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 13:57:14 by dcologgi          #+#    #+#             */
-/*   Updated: 2024/01/04 16:32:17 by dcologgi         ###   ########.fr       */
+/*   Updated: 2024/01/04 16:41:56 by dcologgi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ int main() {
 
 		Intern  	someRandomIntern;
         AForm*   	rrf;
-
 
 		ShrubberyCreationForm	shrub("home");
 		RobotomyRequestForm		rob("Alexa");
@@ -36,6 +35,8 @@ int main() {
 		b2.executeForm(pres);
         
 		rrf = someRandomIntern.makeForm("robotomy request", "Bender");
+		b3.signForm(*rrf);
+		b2.executeForm(*rrf);
         delete rrf;
 		
 	} catch (const std::exception& e) {
