@@ -6,7 +6,7 @@
 /*   By: dcologgi <dcologgi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 15:21:07 by dcologgi          #+#    #+#             */
-/*   Updated: 2024/01/09 15:33:33 by dcologgi         ###   ########.fr       */
+/*   Updated: 2024/01/15 14:36:01 by dcologgi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,8 @@ int main() {
 
     identify(x);
     identify(y);
+
+    delete x;
 
     return 0;
 }
