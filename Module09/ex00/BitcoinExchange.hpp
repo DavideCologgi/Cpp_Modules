@@ -6,7 +6,7 @@
 /*   By: dcologgi <dcologgi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 10:53:14 by dcologgi          #+#    #+#             */
-/*   Updated: 2024/01/17 15:24:21 by dcologgi         ###   ########.fr       */
+/*   Updated: 2024/01/18 14:02:14 by dcologgi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,27 +17,25 @@
 # include <iostream>
 # include <fstream>
 # include <sstream>
+# include <string>
+# include <cstdlib>
 
 class   BitcoinExchange {
     private:
-        std::ifstream                   txtFile;
-        std::ifstream                   dbFile;
-        std::map<std::string, double>   dataMap;
+        std::map<std::string, std::string>   dataMap;
 
-        bool                isValidValue(const std::string& value);
-        
+        std::string getPreviousDate(std::string& current);
+        bool        checkDate(std::string& date);
+        int         checkValue(std::string& value);
+
     public:
         BitcoinExchange();
-        BitcoinExchange(const char* txt, const char* db);
         BitcoinExchange(const BitcoinExchange& other);
         ~BitcoinExchange();
 
         BitcoinExchange&    operator=(const BitcoinExchange& other);
         
-        bool                processFile();
+        void                processFile(const std::string& file);
 };
-
-BitcoinExchange::BitcoinExchange(const BitcoinExchange& other)
-    : txtFile(new std::ifstream(*(other.txtFile))), dbFile(new std::ifstream(*(other.dbFile))), dataMap(other.dataMap) {}
 
 #endif
