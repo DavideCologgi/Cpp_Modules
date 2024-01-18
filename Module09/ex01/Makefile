@@ -4,7 +4,7 @@ MAKEFLAGS += --silent
 
 SRCS = $(wildcard *.cpp)
 OBJS = $(SRCS:.cpp=.o)
-EXECUTABLE = btc
+EXECUTABLE = RPN
 
 all: $(EXECUTABLE)
 
