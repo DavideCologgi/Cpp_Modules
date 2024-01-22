@@ -6,7 +6,7 @@
 /*   By: dcologgi <dcologgi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 15:54:07 by dcologgi          #+#    #+#             */
-/*   Updated: 2023/11/28 17:11:00 by dcologgi         ###   ########.fr       */
+/*   Updated: 2024/01/22 11:31:35 by dcologgi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,9 @@ int main()
 	me->use(0, *bob);
 	me->use(1, *bob);
 	
+	delete src;
 	delete bob;
 	delete me;
-	delete src;
 	
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: dcologgi <dcologgi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 15:40:07 by dcologgi          #+#    #+#             */
-/*   Updated: 2024/01/18 16:27:09 by dcologgi         ###   ########.fr       */
+/*   Updated: 2024/01/22 09:53:26 by dcologgi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define RPN_HPP
 
 # include <iostream>
+# include <sstream>
 # include <algorithm>
 # include <stack>
 # include <cstdlib>
@@ -21,6 +22,8 @@
 class RPN {
     private:
         std::stack<int> numbers;
+
+        bool    isOperator(char c);
         
     public: 
         RPN();

@@ -6,7 +6,7 @@
 /*   By: dcologgi <dcologgi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 16:27:45 by dcologgi          #+#    #+#             */
-/*   Updated: 2023/11/28 16:38:17 by dcologgi         ###   ########.fr       */
+/*   Updated: 2024/01/22 11:43:57 by dcologgi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,9 @@ MateriaSource::MateriaSource() {
 
 MateriaSource::~MateriaSource() {
     for (int i = 0; i < 4; ++i) {
-        delete learnedMat[i];
+        if(learnedMat[i]) {
+            delete learnedMat[i]; 
+        }
     }
 }
 

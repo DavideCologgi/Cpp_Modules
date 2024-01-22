@@ -6,7 +6,7 @@
 /*   By: dcologgi <dcologgi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 15:41:38 by dcologgi          #+#    #+#             */
-/*   Updated: 2023/11/28 16:43:23 by dcologgi         ###   ########.fr       */
+/*   Updated: 2024/01/22 11:45:40 by dcologgi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@ Character::Character(std::string const &name) : p_name(name) {
 
 Character::~Character() {
     for (int i = 0; i < 4; ++i) {
-        delete inventory[i];
+        if (inventory[i])
+            delete inventory[i];
     }
 }
 
@@ -32,6 +33,7 @@ void                Character::equip(AMateria *m) {
     for (int i = 0; i < 4; ++i) {
         if (inventory[i] == NULL)
         {
+            delete inventory[i];
             inventory[i] = m;
             std::cout << m->getType() << " equipped in slot " << i << std::endl;
             return;
