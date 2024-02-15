@@ -17,10 +17,11 @@
 # include <vector>
 # include <algorithm>
 # include <ctime>
+# include <iostream>
 
 class   PmergeMe {
     private:
-
+        std::vector<int>    raw_vector;
         
     public:
         PmergeMe();
@@ -28,6 +29,12 @@ class   PmergeMe {
         ~PmergeMe();
 
         PmergeMe&   operator=(const PmergeMe& other);
+
+        void                execute_with_vector();
+        void                populate(std::string num);
+        std::vector<int>    split_vector();
+        std::vector<int>    calculateJacobsthalSequence(int n);
+        std::string         display_vector(std::vector<int> vect);
 };
 
 #endif
