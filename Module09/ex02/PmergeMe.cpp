@@ -83,7 +83,10 @@ std::vector<int>    PmergeMe::calculateJacobsthalSequence(int n) {
     for (int i = 2; i <= n; ++i) {
         sequence.push_back(sequence[i - 1] + 2 * sequence[i - 2]);
     }
+    sequence.erase(sequence.begin());
+    sequence.erase(sequence.begin());
     return sequence;
+
 }
 
 bool                compareDescending(int a, int b) {
@@ -96,7 +99,7 @@ void                PmergeMe::execute_with_vector() {
     //int                 index;
 
     std::cout << "Before: " << display_vector(raw_vector) << std::endl;
-    jacobsthal = calculateJacobsthalSequence(raw_vector.size() / 2 - 1);
+    jacobsthal = calculateJacobsthalSequence(raw_vector.size() - 1);
     std::cout << "Jacobsthal sequence: " << display_vector(jacobsthal) << std::endl;
     final = split_vector();
     std::cout << "Splitted final vector: " << display_vector(final) << std::endl;
