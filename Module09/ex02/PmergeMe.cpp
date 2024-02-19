@@ -29,7 +29,35 @@ PmergeMe&   PmergeMe::operator=(const PmergeMe& other) {
 
 void                PmergeMe::populate(std::string num) {
     int n = atoi(num.c_str());
+
     raw_vector.push_back(n);
+}
+
+void                PmergeMe::check_error() {
+    std::vector<int>    check;
+    bool has_duplicates = false;
+    
+    check = raw_vector;
+    std::sort(check.begin(), check.end());
+    if (check == raw_vector)
+        throw std::invalid_argument("Error: input already sorted!");
+    for (size_t i = 0; i < raw_vector.size(); ++i) {
+        for (size_t j = i + 1; j < raw_vector.size(); ++j) {
+            if (raw_vector[i] == raw_vector[j]) {
+                has_duplicates = true;
+                break;
+            }
+        }
+        if (has_duplicates) {
+            throw std::invalid_argument("Error: No duplicates allowed!");
+        }
+    }
+    for (size_t i = 0; i < raw_vector.size(); ++i) {
+        if (raw_vector[i] <= 0) {
+            throw std::invalid_argument("Error: Only positive numbers allowed!" );
+            break;
+        }
+    }
 }
 
 std::string         PmergeMe::display_vector(std::vector<int> vect) {
@@ -76,43 +104,84 @@ std::vector<int>    PmergeMe::split_vector() {
 }
 
 std::vector<int>    PmergeMe::calculateJacobsthalSequence(int n) {
-    std::vector<int> sequence;
-    sequence.push_back(0);
-    sequence.push_back(1);
+    std::vector<int>    sequence = {0, 1};
+    std::vector<int>    jacob;
+    long unsigned int   z = 0;
     
+    if (n <= 1)
+        return {sequence.begin(), sequence.begin() + n + 1};
     for (int i = 2; i <= n; ++i) {
         sequence.push_back(sequence[i - 1] + 2 * sequence[i - 2]);
     }
     sequence.erase(sequence.begin());
     sequence.erase(sequence.begin());
-    return sequence;
-
+    jacob.push_back(sequence[z]);
+    while (z < sequence.size()) {
+        jacob.push_back(sequence[z + 1]);
+        int y = sequence[z + 1];
+        while (y > sequence[z] + 1) {
+            jacob.push_back(y - 1);
+            y--;
+        }
+        z++;
+    }
+    while (jacob.size() != ((sequence.size() + 2) / 2)) {
+        jacob.pop_back();
+    }
+    std::cout << "Jacob: " << display_vector(jacob) << std::endl;
+    return jacob;
 }
 
-bool                compareDescending(int a, int b) {
-    return a > b;
+std::vector<int>    PmergeMe::binary_insertion(std::vector<int> raw, std::vector<int> final, int jacob) {
+    int low = 0;
+    int high = final.size() - 1;
+    
+    raw.insert(raw.begin(), 0);
+    while (low <= high) {
+        int mid = low + (high - low) / 2;
+        if (final[mid] < raw[jacob])
+            low = mid + 1;
+        else
+            high = mid - 1;
+    }
+    final.insert(final.begin() + low, raw[jacob]);
+    raw.erase(raw.begin());
+    return final;
 }
 
 void                PmergeMe::execute_with_vector() {
     std::vector<int>    final;
     std::vector<int>    jacobsthal;
-    //int                 index;
 
+    odd_last = -1;
     std::cout << "Before: " << display_vector(raw_vector) << std::endl;
-    jacobsthal = calculateJacobsthalSequence(raw_vector.size() - 1);
-    std::cout << "Jacobsthal sequence: " << display_vector(jacobsthal) << std::endl;
-    final = split_vector();
-    std::cout << "Splitted final vector: " << display_vector(final) << std::endl;
-    std::sort(final.begin(), final.end());
-    if (raw_vector.size() % 2 == 0) {
-        std::sort(raw_vector.begin(), raw_vector.end() - 1, compareDescending);
+    if (raw_vector.size() <= 5) {
+        std::sort(raw_vector.begin(), raw_vector.end());
     } else {
-        std::sort(raw_vector.begin(), raw_vector.end(), compareDescending);
+        if (raw_vector.size() % 2 != 0) {
+            odd_last = raw_vector.back();
+            raw_vector.pop_back();
+        }
+        jacobsthal = calculateJacobsthalSequence(raw_vector.size() - 1);
+        final = split_vector();
+        std::sort(final.begin(), final.end());
+        while (jacobsthal.size() >= 1) {
+            final = binary_insertion(raw_vector, final, jacobsthal[0]);
+            jacobsthal.erase(jacobsthal.begin());
+        }
+        if (odd_last >= 0) {
+            for (size_t i = 0; i < final.size(); ++i) {
+                if (final[i] > odd_last) {
+                    final.insert(final.begin() + i, odd_last);
+                    odd_last = -1;
+                    break;
+                }
+            }
+            if (odd_last >= 0) {
+                final.push_back(odd_last);
+            }
+        }
+        raw_vector = final;
     }
-    std::cout << "Ordered input vector: " << display_vector(raw_vector) << std::endl;
-    std::cout << "Ordered final vector: " << display_vector(final) << std::endl;
-    //while (jacobsthal.size() > 0) {
-    //    insert_number(final, raw_vector, jacobsthal[0]);
-
-    //}
+    std::cout << "After: " << display_vector(raw_vector) << std::endl;
 }

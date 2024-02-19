@@ -22,6 +22,7 @@
 class   PmergeMe {
     private:
         std::vector<int>    raw_vector;
+        int                 odd_last;
         
     public:
         PmergeMe();
@@ -32,8 +33,10 @@ class   PmergeMe {
 
         void                execute_with_vector();
         void                populate(std::string num);
+        void                check_error();
         std::vector<int>    split_vector();
         std::vector<int>    calculateJacobsthalSequence(int n);
+        std::vector<int>    binary_insertion(std::vector<int> input, std::vector<int> res, int index);
         std::string         display_vector(std::vector<int> vect);
 };
 

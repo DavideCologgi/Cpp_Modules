@@ -12,6 +12,8 @@
 
 #include "PmergeMe.hpp"
 #include <iostream>
+#include <chrono>
+#include <sstream>
 
 void    check_input(char* str) {
     int i = 0;
@@ -29,20 +31,34 @@ int main(int argc, char **argv) {
     try
     {
         if (argc == 1) {
-            throw std::invalid_argument("Error: no stack to order as input!");
-        }
-        else {
-            PmergeMe    algorithm;
-            int i = 1;
+            throw std::invalid_argument("Error: No stack to order as input!");
+        } else {
+            if (argc == 2 && atoi(argv[1])) {
+                throw std::invalid_argument("Error: Input must have at least 2 numbers!");
+            } else {
+                PmergeMe    algorithm;
+                int i = 1;
+                
+                typedef std::chrono::high_resolution_clock Clock;
+                typedef std::chrono::microseconds Microseconds;
 
-            while (i < argc) {
-                check_input(argv[i]);
-                algorithm.populate(argv[i]);
-                i++;
+                Clock::time_point start;
+                Clock::time_point end;
+
+                start = Clock::now();
+                while (i < argc) {
+                    algorithm.populate(argv[i]);
+                    i++;
+                }
+                algorithm.check_error();
+                algorithm.execute_with_vector();
+                end = Clock::now();
+
+                Microseconds duration = std::chrono::duration_cast<Microseconds>(end - start);
+                std::cout << "Time to process a range of " << argc - 1 << " elements with vectors: " << duration.count() << " ms" << std::endl;
             }
-            algorithm.execute_with_vector();
+            return 0;
         }
-        return 0;
     }
     catch(const std::exception& e)
     {
