@@ -124,7 +124,7 @@ std::vector<int>    PmergeMe::calculateJacobsthalSequence(int n) {
 std::vector<int>    PmergeMe::binary_insertionI(std::vector<int> raw, std::vector<int> final, int jacob) {
 	int low = 0;
 	int high = final.size() - 1;
-	int size = raw_vector.size();
+	int size = raw.size();
 
 
 	while (jacob >= size) {
@@ -223,12 +223,95 @@ void                PmergeMe::populate_list(std::string num) {
 	raw_list.push_back(n);
 }
 
+std::deque<int>		PmergeMe::split_list() {
+    std::deque<int> result;
+
+    if (raw_list.size() < 2)
+        return result;
+    for (size_t i = 0; i < raw_list.size(); i += 2) {
+        result.push_back(std::max(raw_list[i], raw_list[i + 1]));
+    }
+    for (size_t j = 0; j < result.size(); ++j) {
+        int value = result[j];
+        for (std::deque<int>::iterator it = raw_list.begin(); it != raw_list.end(); ++it) {
+            if (*it == value) {
+                raw_list.erase(it);
+                break;
+            }
+        }
+    }
+    return result;
+}
+
+std::deque<int>		PmergeMe::calculateJacobsthalSequenceList(int n) {
+	std::deque<int>		sequence = {0, 1};
+	std::deque<int>		jacob;
+	long unsigned int	z = 0;
+	
+	if (n <= 1)
+		return {sequence.begin(), sequence.begin() + n + 1};
+	for (int i = 2; i <= n; ++i) {
+		sequence.push_back(sequence[i - 1] + 2 * sequence[i - 2]);
+	}
+	sequence.erase(sequence.begin());
+	sequence.erase(sequence.begin());
+	jacob.push_back(sequence[z]);
+	while (z < sequence.size()) {
+		jacob.push_back(sequence[z + 1]);
+		int y = sequence[z + 1];
+		while (y > sequence[z] + 1) {
+			jacob.push_back(y - 1);
+			y--;
+		}
+		z++;
+	}
+	while (jacob.size() != ((sequence.size() + 2) / 2)) {
+		jacob.pop_back();
+	}
+	return jacob;
+}
+
+std::deque<int>		PmergeMe::binary_insertionIII(std::deque<int> raw, std::deque<int> final, int jacob) {
+	int low = 0;
+	int high = final.size() - 1;
+	int size = raw.size();
+
+
+	while (jacob >= size) {
+		jacob--;
+	}
+	while (low <= high) {
+		int mid = low + (high - low) / 2;
+		if (final[mid] < raw[jacob])
+			low = mid + 1;
+		else
+			high = mid - 1;
+	}
+	final.insert(final.begin() + low, raw[jacob]);
+	return final;
+}
+
+std::deque<int>		PmergeMe::binary_insertionIV(std::deque<int> final, int value) {
+	int low = 0;
+	int high = final.size() - 1;
+	
+	while (low <= high) {
+		int mid = low + (high - low) / 2;
+		if (final[mid] < value)
+			low = mid + 1;
+		else
+			high = mid - 1;
+	}
+	final.insert(final.begin() + low, value);
+	return final;
+}
+
 void				PmergeMe::execute_with_list() {
 	std::deque<int>	final;
 	std::deque<int>	jacobsthal;
 	int				odd_last;
 	
-	std::cout << "List: " << display_list(raw_list) << std::endl;
+	std::cout << "Before: " << display_list(raw_list) << std::endl;
 	odd_last = -1;
 	if (raw_list.size() % 2 != 0) {
 		odd_last = raw_list.back();
@@ -265,5 +348,6 @@ void				PmergeMe::execute_with_list() {
 			final.push_back(odd_last);
 		}
 	}
+	std::cout << "After: " << display_list(final) << std::endl;
 	raw_list = final;
 }

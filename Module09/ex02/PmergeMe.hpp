@@ -47,7 +47,6 @@ class   PmergeMe {
 
 		void                execute_with_list();
 		void                populate_list(std::string num);
-		void                check_error_list();
 		std::deque<int>     split_list();
 		std::deque<int>		calculateJacobsthalSequenceList(int n);
 		std::deque<int>     binary_insertionIII(std::deque<int> input, std::deque<int> res, int index);

@@ -15,18 +15,6 @@
 #include <chrono>
 #include <sstream>
 
-void    check_input(char* str) {
-    int i = 0;
-
-    while (str[i]) {
-        if ((str[i] < '0' || str[i] > '9') && str[i] != ' ') {
-            throw std::invalid_argument("Error: insert only positive numbers as input!");
-        }
-        i++;
-    }
-    return;
-}
-
 int main(int argc, char **argv) {
     try
     {
@@ -67,12 +55,11 @@ int main(int argc, char **argv) {
                     algorithm.populate_list(argv[i]);
                     i++;
                 }
-                algorithm.check_error_list();
                 algorithm.execute_with_list();
                 end = Clock::now();
 
-                Microseconds duration = std::chrono::duration_cast<Microseconds>(end - start);
-                std::cout << "Time to process a range of " << argc - 1 << " elements with lists: " << duration.count() << " ms" << std::endl;
+                Microseconds duration_list = std::chrono::duration_cast<Microseconds>(end - start);
+                std::cout << "Time to process a range of " << argc - 1 << " elements with lists: " << duration_list.count() << " ms" << std::endl;
             }
             return 0;
         }
