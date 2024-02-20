@@ -31,21 +31,19 @@ PmergeMe&   PmergeMe::operator=(const PmergeMe& other) {
 
 // Funzioni per vettori
 
-void                PmergeMe::populate_vect(std::string num) {
-	int n = atoi(num.c_str());
-
+void                PmergeMe::populateVector(int n) {
 	raw_vector.push_back(n);
 }
 
 
-void                PmergeMe::check_error() {
+void                PmergeMe::checkError() {
 	std::vector<int>    check;
 	bool has_duplicates = false;
 	
 	check = raw_vector;
 	std::sort(check.begin(), check.end());
 	if (check == raw_vector)
-		throw std::invalid_argument("Error: input already sorted!");
+		throw std::invalid_argument("Error: Input already sorted!");
 	for (size_t i = 0; i < raw_vector.size(); ++i) {
 		for (size_t j = i + 1; j < raw_vector.size(); ++j) {
 			if (raw_vector[i] == raw_vector[j]) {
@@ -65,7 +63,7 @@ void                PmergeMe::check_error() {
 	}
 }
 
-std::string         PmergeMe::display_vector(std::vector<int> vect) {
+std::string         PmergeMe::displayVector(std::vector<int> vect) {
 	std::string result;
 	for (int num : vect) {
 		result += std::to_string(num) + " ";
@@ -73,7 +71,7 @@ std::string         PmergeMe::display_vector(std::vector<int> vect) {
 	return result;
 }
 
-std::vector<int>    PmergeMe::split_vector() {
+std::vector<int>    PmergeMe::splitVector() {
 	std::vector<int> result;
 
 	if (raw_vector.size() < 2)
@@ -121,7 +119,7 @@ std::vector<int>    PmergeMe::calculateJacobsthalSequence(int n) {
 	return jacob;
 }
 
-std::vector<int>    PmergeMe::binary_insertionI(std::vector<int> raw, std::vector<int> final, int jacob) {
+std::vector<int>    PmergeMe::binaryInsertionI(std::vector<int> raw, std::vector<int> final, int jacob) {
 	int low = 0;
 	int high = final.size() - 1;
 	int size = raw.size();
@@ -141,7 +139,7 @@ std::vector<int>    PmergeMe::binary_insertionI(std::vector<int> raw, std::vecto
 	return final;
 }
 
-std::vector<int>    PmergeMe::binary_insertionII(std::vector<int> final, int val) {
+std::vector<int>    PmergeMe::binaryInsertionII(std::vector<int> final, int val) {
 	int low = 0;
 	int high = final.size() - 1;
 	
@@ -156,22 +154,22 @@ std::vector<int>    PmergeMe::binary_insertionII(std::vector<int> final, int val
 	return final;
 }
 
-void                PmergeMe::execute_with_vector() {
+void                PmergeMe::executeVector() {
 	std::vector<int>	final;
 	std::vector<int>	jacobsthal;
 	int					odd_last;
 
 	odd_last = -1;
-	std::cout << "Before: " << display_vector(raw_vector) << std::endl;
+	std::cout << "Before: " << displayVector(raw_vector) << std::endl;
 	if (raw_vector.size() % 2 != 0) {
 		odd_last = raw_vector.back();
 		raw_vector.pop_back();
 	}
 	if (raw_vector.size() <= 4) {
-		final = split_vector();
+		final = splitVector();
 		std::sort(final.begin(), final.end());
 		while (raw_vector.size() >= 1) {
-			final = binary_insertionII(final, raw_vector[0]);
+			final = binaryInsertionII(final, raw_vector[0]);
 			raw_vector.erase(raw_vector.begin());
 		}
 	} else {
@@ -179,10 +177,10 @@ void                PmergeMe::execute_with_vector() {
 		for (size_t i = 0; i < jacobsthal.size(); ++i) {
 			jacobsthal[i] -= 1;
 		}
-		final = split_vector();
+		final = splitVector();
 		std::sort(final.begin(), final.end());
 		while (jacobsthal.size() >= 1) {
-			final = binary_insertionI(raw_vector, final, jacobsthal[0]);
+			final = binaryInsertionI(raw_vector, final, jacobsthal[0]);
 			jacobsthal.erase(jacobsthal.begin());
 		}
 	}
@@ -199,12 +197,12 @@ void                PmergeMe::execute_with_vector() {
 		}
 	}
 	raw_vector = final;
-	std::cout << "After: " << display_vector(raw_vector) << std::endl;
+	std::cout << "After: " << displayVector(raw_vector) << std::endl;
 }
 
 // Funzioni per liste
 
-std::string         PmergeMe::display_list(std::deque<int> list) {
+std::string         PmergeMe::displayList(std::deque<int> list) {
 	std::stringstream ss;
 	ss << "[";
 	for (size_t i = 0; i < list.size(); ++i) {
@@ -217,13 +215,11 @@ std::string         PmergeMe::display_list(std::deque<int> list) {
 	return ss.str();
 }
 
-void                PmergeMe::populate_list(std::string num) {
-	int n = atoi(num.c_str());
-
+void                PmergeMe::populateList(int n) {
 	raw_list.push_back(n);
 }
 
-std::deque<int>		PmergeMe::split_list() {
+std::deque<int>		PmergeMe::splitList() {
     std::deque<int> result;
 
     if (raw_list.size() < 2)
@@ -271,7 +267,7 @@ std::deque<int>		PmergeMe::calculateJacobsthalSequenceList(int n) {
 	return jacob;
 }
 
-std::deque<int>		PmergeMe::binary_insertionIII(std::deque<int> raw, std::deque<int> final, int jacob) {
+std::deque<int>		PmergeMe::binaryInsertionIII(std::deque<int> raw, std::deque<int> final, int jacob) {
 	int low = 0;
 	int high = final.size() - 1;
 	int size = raw.size();
@@ -291,7 +287,7 @@ std::deque<int>		PmergeMe::binary_insertionIII(std::deque<int> raw, std::deque<i
 	return final;
 }
 
-std::deque<int>		PmergeMe::binary_insertionIV(std::deque<int> final, int value) {
+std::deque<int>		PmergeMe::binaryInsertionIV(std::deque<int> final, int value) {
 	int low = 0;
 	int high = final.size() - 1;
 	
@@ -306,22 +302,22 @@ std::deque<int>		PmergeMe::binary_insertionIV(std::deque<int> final, int value) 
 	return final;
 }
 
-void				PmergeMe::execute_with_list() {
+void				PmergeMe::executeList() {
 	std::deque<int>	final;
 	std::deque<int>	jacobsthal;
 	int				odd_last;
 	
-	std::cout << "Before: " << display_list(raw_list) << std::endl;
+	std::cout << "Before: " << displayList(raw_list) << std::endl;
 	odd_last = -1;
 	if (raw_list.size() % 2 != 0) {
 		odd_last = raw_list.back();
 		raw_list.pop_back();
 	}
 	if (raw_list.size() <= 4) {
-		final = split_list();
+		final = splitList();
 		std::sort(final.begin(), final.end());
 		while (raw_list.size() >= 1) {
-			final = binary_insertionIV(final, raw_list[0]);
+			final = binaryInsertionIV(final, raw_list[0]);
 			raw_list.erase(raw_list.begin());
 		}
 	} else {
@@ -329,10 +325,10 @@ void				PmergeMe::execute_with_list() {
 		for (size_t i = 0; i < jacobsthal.size(); ++i) {
 			jacobsthal[i] -= 1;
 		}
-		final = split_list();
+		final = splitList();
 		std::sort(final.begin(), final.end());
 		while (jacobsthal.size() >= 1) {
-			final = binary_insertionIII(raw_list, final, jacobsthal[0]);
+			final = binaryInsertionIII(raw_list, final, jacobsthal[0]);
 			jacobsthal.erase(jacobsthal.begin());
 		}
 	}
@@ -348,6 +344,6 @@ void				PmergeMe::execute_with_list() {
 			final.push_back(odd_last);
 		}
 	}
-	std::cout << "After: " << display_list(final) << std::endl;
+	std::cout << "After: " << displayList(final) << std::endl;
 	raw_list = final;
 }

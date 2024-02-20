@@ -34,24 +34,24 @@ class   PmergeMe {
 
 		// Funzioni per vettori
 
-		void                execute_with_vector();
-		void                populate_vect(std::string num);
-		void                check_error();
-		std::vector<int>    split_vector();
+		void                executeVector();
+		void                populateVector(int n);
+		void                checkError();
+		std::vector<int>    splitVector();
 		std::vector<int>    calculateJacobsthalSequence(int n);
-		std::vector<int>    binary_insertionI(std::vector<int> input, std::vector<int> res, int index);
-		std::vector<int>    binary_insertionII(std::vector<int> final, int val);
-		std::string         display_vector(std::vector<int> vect);
+		std::vector<int>    binaryInsertionI(std::vector<int> input, std::vector<int> res, int index);
+		std::vector<int>    binaryInsertionII(std::vector<int> final, int val);
+		std::string         displayVector(std::vector<int> vect);
 
 		// Funzioni per liste
 
-		void                execute_with_list();
-		void                populate_list(std::string num);
-		std::deque<int>     split_list();
+		void                executeList();
+		void                populateList(int n);
+		std::deque<int>     splitList();
 		std::deque<int>		calculateJacobsthalSequenceList(int n);
-		std::deque<int>     binary_insertionIII(std::deque<int> input, std::deque<int> res, int index);
-		std::deque<int>     binary_insertionIV(std::deque<int> final, int val);
-		std::string         display_list(std::deque<int> list);
+		std::deque<int>     binaryInsertionIII(std::deque<int> input, std::deque<int> res, int index);
+		std::deque<int>     binaryInsertionIV(std::deque<int> final, int val);
+		std::string         displayList(std::deque<int> list);
 };
 
 #endif
