@@ -18,26 +18,41 @@
 # include <algorithm>
 # include <ctime>
 # include <iostream>
+# include <sstream>
 
 class   PmergeMe {
-    private:
-        std::vector<int>    raw_vector;
-        int                 odd_last;
-        
-    public:
-        PmergeMe();
-        PmergeMe(const PmergeMe& other);
-        ~PmergeMe();
+	private:
+		std::vector<int>    raw_vector;
+		std::deque<int>     raw_list;
+		
+	public:
+		PmergeMe();
+		PmergeMe(const PmergeMe& other);
+		~PmergeMe();
 
-        PmergeMe&   operator=(const PmergeMe& other);
+		PmergeMe&   operator=(const PmergeMe& other);
 
-        void                execute_with_vector();
-        void                populate(std::string num);
-        void                check_error();
-        std::vector<int>    split_vector();
-        std::vector<int>    calculateJacobsthalSequence(int n);
-        std::vector<int>    binary_insertion(std::vector<int> input, std::vector<int> res, int index);
-        std::string         display_vector(std::vector<int> vect);
+		// Funzioni per vettori
+
+		void                execute_with_vector();
+		void                populate_vect(std::string num);
+		void                check_error();
+		std::vector<int>    split_vector();
+		std::vector<int>    calculateJacobsthalSequence(int n);
+		std::vector<int>    binary_insertionI(std::vector<int> input, std::vector<int> res, int index);
+		std::vector<int>    binary_insertionII(std::vector<int> final, int val);
+		std::string         display_vector(std::vector<int> vect);
+
+		// Funzioni per liste
+
+		void                execute_with_list();
+		void                populate_list(std::string num);
+		void                check_error_list();
+		std::deque<int>     split_list();
+		std::deque<int>		calculateJacobsthalSequenceList(int n);
+		std::deque<int>     binary_insertionIII(std::deque<int> input, std::deque<int> res, int index);
+		std::deque<int>     binary_insertionIV(std::deque<int> final, int val);
+		std::string         display_list(std::deque<int> list);
 };
 
 #endif

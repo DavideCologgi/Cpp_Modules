@@ -45,9 +45,12 @@ int main(int argc, char **argv) {
                 Clock::time_point start;
                 Clock::time_point end;
 
+                // Esecuzione con vettori
+
                 start = Clock::now();
                 while (i < argc) {
-                    algorithm.populate(argv[i]);
+                    algorithm.populate_vect(argv[i]);
+                    algorithm.populate_list(argv[i]);
                     i++;
                 }
                 algorithm.check_error();
@@ -56,6 +59,20 @@ int main(int argc, char **argv) {
 
                 Microseconds duration = std::chrono::duration_cast<Microseconds>(end - start);
                 std::cout << "Time to process a range of " << argc - 1 << " elements with vectors: " << duration.count() << " ms" << std::endl;
+
+                // Esecuzione con liste
+
+                start = Clock::now();
+                while (i < argc) {
+                    algorithm.populate_list(argv[i]);
+                    i++;
+                }
+                algorithm.check_error_list();
+                algorithm.execute_with_list();
+                end = Clock::now();
+
+                Microseconds duration = std::chrono::duration_cast<Microseconds>(end - start);
+                std::cout << "Time to process a range of " << argc - 1 << " elements with lists: " << duration.count() << " ms" << std::endl;
             }
             return 0;
         }
