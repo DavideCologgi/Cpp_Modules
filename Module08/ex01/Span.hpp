@@ -18,6 +18,7 @@
 # include <algorithm>
 # include <limits>
 # include <iostream>
+# include <cstddef>
 
 class Span {
     private:

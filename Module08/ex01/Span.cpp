@@ -50,7 +50,7 @@ std::ptrdiff_t    Span::shortestSpan() {
     return minSpan;
 }
 
-ptrdiff_t    Span::longestSpan() {
+std::ptrdiff_t    Span::longestSpan() {
     if (elements.size() <= 1) {
         throw std::logic_error("not enough elements to calculate!");
     }
