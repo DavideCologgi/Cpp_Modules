@@ -34,6 +34,12 @@ void    Span::addNumber(int n) {
     elements.push_back(n);
 }
 
+void Span::addNumbers(const int* begin, const int* end) {
+    if (elements.size() + std::distance(begin, end) > size)
+        throw std::out_of_range("Adding this range exceeds Span capacity");
+    elements.insert(elements.end(), begin, end);
+}
+
 std::ptrdiff_t    Span::shortestSpan() {
     if (elements.size() < 2) {
         throw std::logic_error("not enough elements to calculate!");

@@ -40,7 +40,19 @@ int main()
         std::cout << *it << std::endl;
         ++it;
     }
-    std::stack<int> s(mstack);
     
+    std::cout << "Content of the stack in reverse order: " << std::endl;
+    MutantStack<int>::iterator rit = mstack.end();
+    while (rit != mstack.begin()) {
+        --rit;
+        std::cout << *rit << std::endl;
+    }
+
+    std::stack<int> s(mstack);
+    std::cout << "Content of the copied stack: " << std::endl;
+    while (!s.empty()) {
+        std::cout << s.top() << std::endl;
+        s.pop();
+    }
     return 0;
 }

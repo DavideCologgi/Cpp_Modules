@@ -14,7 +14,7 @@
 
 int main() {
 	try {
-		Span sp = Span(5);
+		Span	sp = Span(5);
 		
 		sp.addNumber(6);
 		sp.addNumber(3);
@@ -26,6 +26,13 @@ int main() {
 		
 		std::cout << "Shortest span is: " << sp.shortestSpan() << std::endl;
 		std::cout << "Longest span is: " << sp.longestSpan() << std::endl;
+
+		Span	sp2 = Span(10);
+		int 	arr[] = {6, 3, 17, 9, 11};
+    	
+		sp2.addNumbers(arr, arr + sizeof(arr) / sizeof(arr[0]));
+		std::cout << "Shortest span is: " << sp2.shortestSpan() << std::endl;
+		std::cout << "Longest span is: " << sp2.longestSpan() << std::endl;
 	} catch (const std::exception& e) {
 		std::cerr << "Error: " << e.what() << std::endl;
 	}

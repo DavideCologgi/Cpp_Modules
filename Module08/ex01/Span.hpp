@@ -33,6 +33,7 @@ class Span {
 
         Span&         operator=(const Span& other);
         void          addNumber(int n);
+        void          addNumbers(const int* begin, const int* end);
         ptrdiff_t     shortestSpan();
         ptrdiff_t     longestSpan();
 };
