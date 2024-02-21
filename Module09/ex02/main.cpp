@@ -44,7 +44,6 @@ int main(int argc, char **argv) {
 
         start = Clock::now();
 
-        // Check if the input is generated using 'shuf'
         if (strcmp(argv[1], "shuf") == 0) {
             if (argc != 3) {
                 throw std::invalid_argument("Error: Usage: ./PmergeMe shuf <options>\n");
